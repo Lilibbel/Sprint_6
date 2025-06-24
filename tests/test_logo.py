@@ -13,7 +13,7 @@ class TestLogosMain:
     def test_scooter_logo_redirect_main(self, driver):
         main_page = MainPage(driver)
         main_page.click_on_logo_scooter()
-        WebDriverWait(driver, 10).until(EC.url_to_be(TestData.base_url))
+        main_page.wait_visibility_scooter_homepage()
         assert driver.current_url == TestData.base_url
 
     @allure.title('Проверка перехода на Дзен при клике на логотип Яндекса')
@@ -21,7 +21,7 @@ class TestLogosMain:
         main_page = MainPage(driver)
         main_page.click_on_logo_yandex()
         main_page.switch_to_dzen_window()
-        WebDriverWait(driver, 20).until(EC.url_contains('dzen.ru'))
+        main_page.wait_visibility_dzen_page()
         assert 'dzen.ru' in main_page.driver.current_url.lower()
 
 @allure.feature('Проверка логотипов на странице заказа')
@@ -30,7 +30,7 @@ class TestLogosOrder:
     def test_scooter_logo_redirect(self, driver):
         order_page = OrderPage(driver)
         order_page.click_on_logo_scooter()
-        WebDriverWait(driver, 10).until(EC.url_to_be(TestData.base_url))
+        order_page.wait_visibility_scooter_homepage()
         assert order_page.driver.current_url == TestData.base_url
 
     @allure.title('Проверка перехода на Дзен при клике на логотип Яндекса')
@@ -38,5 +38,5 @@ class TestLogosOrder:
         order_page = OrderPage(driver)
         order_page.click_on_logo_yandex()
         order_page.switch_to_dzen_window()
-        WebDriverWait(driver, 20).until(EC.url_contains('dzen.ru'))
+        order_page.wait_visibility_dzen_page()
         assert 'dzen.ru' in order_page.driver.current_url.lower()

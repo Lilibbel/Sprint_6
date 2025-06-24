@@ -1,6 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 import allure
+from data import TestData
 
 class BasePage:
     def __init__(self, driver):
@@ -43,3 +44,11 @@ class BasePage:
     @allure.step('Перейти на вкладку Дзен')
     def switch_to_dzen_window(self):
         self.switch_to_last_window()
+
+    @allure.step('Подождать прогрузки главной страницы самоката')
+    def wait_visibility_scooter_homepage(self):
+        WebDriverWait(self.driver, 10).until(EC.url_to_be(TestData.base_url))
+
+    @allure.step('Подождать прогрузки страницы dzen')
+    def wait_visibility_dzen_page(self):
+        WebDriverWait(self.driver, 20).until(EC.url_contains('dzen.ru'))

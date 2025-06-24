@@ -240,3 +240,7 @@ cython_debug/
 #.idea/
 
 !/requirements.txt
+!/.venv/
+!/.venv/
+!/.venv/Lib/
+!/.venv/

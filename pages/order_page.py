@@ -28,7 +28,7 @@ class OrderPage(BasePage):
     def send_second_form_to_input(self, keys):
         self.wait_visibility_of_element(LocatorsOrderPage.date_input)
         self.send_keys_to_input(LocatorsOrderPage.date_input, keys[5])
-        self.click_on_element((By.XPATH, "//div[contains(text(), 'Про аренду')]"))
+        self.click_on_element(LocatorsOrderPage.text_about_rent)
         self.click_on_element(LocatorsOrderPage.period)
         period_locator = (By.XPATH,f'//*[contains(text(), "{keys[6]}")]')
         self.click_on_element(period_locator)
